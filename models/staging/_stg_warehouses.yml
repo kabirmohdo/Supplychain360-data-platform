@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: _stg_warehouses
+    description: "Bronze layer view of warehouse locations."
+    columns:
+      - name: warehouse_id
+        description: "Primary key for the warehouse."
+        tests:
+          - unique
+          - not_null
+
+      - name: city
+        description: "City where the warehouse is located."
+        
+      - name: state
+        description: "State/Province where the warehouse is located."
