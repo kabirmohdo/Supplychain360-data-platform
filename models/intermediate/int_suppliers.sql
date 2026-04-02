@@ -5,8 +5,8 @@
     )
 }}
 
-WITH bronze_suppliers AS (
-    SELECT * FROM {{ ref('bronze_suppliers') }}
+WITH stg_suppliers AS (
+    SELECT * FROM {{ ref('stg_suppliers') }}
 
     {% if is_incremental() %}
     WHERE ingestion_timestamp > (SELECT MAX(ingestion_timestamp) FROM {{ this }})
@@ -20,7 +20,7 @@ deduplicated AS (
             PARTITION BY supplier_id 
             ORDER BY ingestion_timestamp DESC
         ) AS row_num
-    FROM bronze_suppliers
+    FROM stg_suppliers
 ),
 
 transformed AS (
@@ -32,7 +32,7 @@ transformed AS (
         TRIM(country) AS country,
 
         ingestion_timestamp,
-        _ingested_at AS bronze_ingested_at,
+        _ingested_at AS stg_ingested_at,
         CURRENT_TIMESTAMP AS _transformed_at
     FROM deduplicated
     WHERE row_num = 1

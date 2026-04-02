@@ -12,7 +12,7 @@ renamed as (
         store_open_date,
         ingestion_timestamp,
         current_timestamp as _ingested_at,
-        'raw.store_locations' as _source_file_path
+        'raw.stores_details' as _source_file_path
     FROM source
 )
 

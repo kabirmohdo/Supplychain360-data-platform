@@ -38,3 +38,6 @@ models:
       
       - name: transaction_timestamp
         description: "Timestamp of the sale."
+
+      - name: file_date
+        description: "raw file creation date"

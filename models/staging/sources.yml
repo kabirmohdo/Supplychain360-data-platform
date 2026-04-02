@@ -7,8 +7,17 @@ sources:
     schema: public
 
     tables:
+      - name: inventory
+        description: "Snapshot of inventory levels per product at each warehouse."
+      
+      - name: stores_sales
+        description: "Transactional sales data."
+      
+      - name: shipments
+        description: "Records of product shipments from warehouses to stores."
+
       - name: suppliers
-        description: "information about suppliers providing products to the business."
+        description: "information about suppliers providing products."
       
       - name: warehouses
         description: "List of warehouses where inventory is stored."
@@ -19,11 +28,4 @@ sources:
       - name: products
         description: "Catalog of products sold across stores."
       
-      - name: inventory
-        description: "Snapshot of inventory levels per product at each warehouse."
       
-      - name: stores_sales
-        description: "Transactional sales data."
-      
-      - name: shipments
-        description: "Records of product shipments from warehouses to stores."

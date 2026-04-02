@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_shipments
-    description: "staging layer view of logistical shipment records."
+    description: "staging layer view of shipment records."
     columns:
       - name: shipment_id
         description: "Primary key for the shipment."
@@ -11,7 +11,7 @@ models:
           - not_null
 
       - name: warehouse_id
-        description: "Foreign key identifying origin warehouse."
+        description: "Foreign key identifying warehouse."
         tests:
           - relationships:
               to: ref('stg_warehouses')
@@ -25,23 +25,26 @@ models:
               field: store_id
 
       - name: product_id
-        description: "Foreign key for the shipped product."
+        description: "Foreign key for products."
         tests:
           - relationships:
               to: ref('stg_products')
               field: product_id
 
       - name: quantity_shipped
-        description: "Volume of units in transit."
+        description: "Volume of shipment in transit."
       
       - name: shipment_date
         description: "Date the shipment left the warehouse."
       
       - name: expected_delivery_date
-        description: "Target arrival date at the store."
+        description: "Projected Arrival date at the store."
       
       - name: actual_delivery_date
-        description: "Realized arrival date at the store."
+        description: "Arrival date at the store."
       
       - name: carrier
-        description: "Logistics provider name."
+        description: "Logistics provider."
+
+      - name: file_date
+        description: "date source file was generated"

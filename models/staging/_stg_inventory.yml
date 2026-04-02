@@ -17,6 +17,7 @@ models:
           - relationships:
               to: ref('stg_products')
               field: product_id
+
       - name: quantity_available
         description: "Number of units currently in stock."
 
@@ -24,4 +25,4 @@ models:
         description: "Safety stock level for reordering."
         
       - name: snapshot_date
-        description: "Date of the inventory record."
+        description: "Inventory record date."

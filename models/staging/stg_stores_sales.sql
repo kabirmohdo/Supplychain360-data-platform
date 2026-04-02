@@ -1,5 +1,5 @@
 with source as (
-    SELECT * FROM {{ source('raw', 'sales_details') }}
+    SELECT * FROM {{ source('raw', 'stores_sales') }}
 ),
 
 renamed as (
@@ -13,8 +13,9 @@ renamed as (
         sale_amount,
         transaction_timestamp,
         ingestion_timestamp,
+        file_date,
         current_timestamp as _ingested_at,
-        'raw.sales' as _source_file_path
+        'raw.stores_sales' as _source_file_path
     FROM source
 )
 

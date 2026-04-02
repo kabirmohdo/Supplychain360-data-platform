@@ -1,14 +1,14 @@
 
 WITH sales AS (
-    SELECT * FROM {{ ref('silver_sales') }}
+    SELECT * FROM {{ ref('int_stores_sales') }}
 ),
 
 stores AS (
-    SELECT * FROM {{ ref('silver_store_locations') }}
+    SELECT * FROM {{ ref('int_stores_details') }}
 ),
 
 products AS (
-    SELECT * FROM {{ ref('silver_products') }}
+    SELECT * FROM {{ ref('int_products') }}
 ),
 
 regional_agg AS (

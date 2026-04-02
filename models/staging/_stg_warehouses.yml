@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: _stg_warehouses
-    description: "Bronze layer view of warehouse locations."
+    description: "staging layer view of warehouses."
     columns:
       - name: warehouse_id
         description: "Primary key for the warehouse."
@@ -11,7 +11,7 @@ models:
           - not_null
 
       - name: city
-        description: "City where the warehouse is located."
+        description: "City of warehouse."
         
       - name: state
-        description: "State/Province where the warehouse is located."
+        description: "State/Province of warehouse"

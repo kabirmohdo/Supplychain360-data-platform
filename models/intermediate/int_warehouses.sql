@@ -5,7 +5,7 @@
     )
 }}
 
-WITH bronze_warehouses AS (
+WITH stg_warehouses AS (
     SELECT * FROM {{ ref('bronze_warehouses') }}
 
     {% if is_incremental() %}
@@ -20,7 +20,7 @@ deduplicated AS (
             PARTITION BY warehouse_id 
             ORDER BY ingestion_timestamp DESC
         ) AS row_num
-    FROM bronze_warehouses
+    FROM stg_warehouses
 ),
 
 transformed AS (
@@ -31,7 +31,7 @@ transformed AS (
         TRIM(state) AS state,
 
         ingestion_timestamp,
-        _ingested_at AS bronze_ingested_at,
+        _ingested_at AS stg_ingested_at,
         CURRENT_TIMESTAMP AS _transformed_at
     FROM deduplicated
     WHERE row_num = 1

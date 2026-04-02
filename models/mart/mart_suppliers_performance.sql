@@ -1,14 +1,14 @@
 
 WITH shipments AS (
-    SELECT * FROM {{ ref('silver_shipments') }}
+    SELECT * FROM {{ ref('int_shipments') }}
 ),
 
 products AS (
-    SELECT * FROM {{ ref('silver_products') }}
+    SELECT * FROM {{ ref('int_products') }}
 ),
 
 suppliers AS (
-    SELECT * FROM {{ ref('silver_suppliers') }}
+    SELECT * FROM {{ ref('int_suppliers') }}
 ),
 
 performance_metrics AS (
@@ -22,7 +22,7 @@ performance_metrics AS (
         s.carrier,
         s.delivery_status,
         s.delivery_delay_days,
-        -- Binary flags for easy aggregation in BI tools
+        
         CASE WHEN s.delivery_status = 'LATE' THEN 1 ELSE 0 END AS is_late_flag,
         CASE WHEN s.delivery_status = 'ON_TIME' THEN 1 ELSE 0 END AS is_on_time_flag
     FROM shipments s

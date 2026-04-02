@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_suppliers
-    description: "staging layer view of supplier reference data."
+    description: "staging layer view of suppliers data."
     columns:
       - name: supplier_id
         description: "Primary key for the supplier."
@@ -11,10 +11,10 @@ models:
           - not_null
       
       - name: supplier_name
-        description: "Name of the supplier organization."
+        description: "Name of the supplier."
       
       - name: category
-        description: "The industry category the supplier belongs to."
+        description: "The industry category of the supplier"
       
       - name: country
-        description: "The country where the supplier is based."
+        description: "Country of supplier"

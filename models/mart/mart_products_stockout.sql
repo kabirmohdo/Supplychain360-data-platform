@@ -1,14 +1,14 @@
 WITH inventories AS (
-    SELECT * FROM {{ ref('silver_inventories') }}
+    SELECT * FROM {{ ref('int_inventory') }}
 ),
 
 products AS (
-    SELECT * FROM {{ ref('silver_products') }}
+    SELECT * FROM {{ ref('int_products') }}
 ),
 
 joined AS (
     SELECT
-        i.inventory_pk,
+        i.inventory_sk,
         i.snapshot_date,
         p.product_id,
         p.product_name,
@@ -19,14 +19,14 @@ joined AS (
         i.quantity_available,
         i.reorder_threshold,
         i.stock_status,
-        -- Business Logic: Determine priority for "Product Stockout Trends"
+        
         CASE 
             WHEN i.stock_status = 'OUT_OF_STOCK' AND p.price_segment = 'HIGH_VALUE' THEN 'CRITICAL'
             WHEN i.stock_status = 'OUT_OF_STOCK' THEN 'URGENT'
             WHEN i.stock_status = 'LOW_STOCK' THEN 'WARNING'
             ELSE 'STABLE'
         END AS replenishment_priority
-    FROM inventories i
+    FROM inventory i
     LEFT JOIN products p ON i.product_id = p.product_id
 )
 

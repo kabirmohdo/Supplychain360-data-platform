@@ -5,8 +5,8 @@
     )
 }}
 
-WITH bronze_products AS (
-    SELECT * FROM {{ ref('bronze_products') }}
+WITH stg_products AS (
+    SELECT * FROM {{ ref('stg_products') }}
 
     {% if is_incremental() %}
     WHERE ingestion_timestamp > (SELECT MAX(ingestion_timestamp) FROM {{ this }})
@@ -20,7 +20,7 @@ deduplicated AS (
             PARTITION BY product_id 
             ORDER BY ingestion_timestamp DESC
         ) AS row_num
-    FROM bronze_products
+    FROM stg_products
 ),
 
 transformed AS (
@@ -41,7 +41,7 @@ transformed AS (
         END AS price_segment,
 
         ingestion_timestamp,
-        _ingested_at AS bronze_ingested_at,
+        _ingested_at AS stg_ingested_at,
         CURRENT_TIMESTAMP AS _transformed_at
     FROM deduplicated
     WHERE row_num = 1

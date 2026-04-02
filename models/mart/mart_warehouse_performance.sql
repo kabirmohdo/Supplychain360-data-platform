@@ -1,9 +1,9 @@
 WITH warehouses AS (
-    SELECT * FROM {{ ref('silver_warehouses') }}
+    SELECT * FROM {{ ref('int_warehouses') }}
 ),
 
 inventories AS (
-    SELECT * FROM {{ ref('silver_inventories') }}
+    SELECT * FROM {{ ref('int_inventory') }}
 ),
 
 efficiency_agg AS (
