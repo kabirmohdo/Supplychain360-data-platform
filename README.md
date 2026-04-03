@@ -72,6 +72,7 @@ Docker            For containerization
 - Clone Repository
   ```
   git clone https://github.com/kabirmohdo/Supplychain360-data-platform.git
+  
   cd Supplychain360-data-platform
   ```
 
