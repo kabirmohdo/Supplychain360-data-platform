@@ -5,12 +5,24 @@
     )
 }}
 
-WITH stg_stores_sales AS (
-
-    SELECT * FROM {{ ref('stg_stores_sales') }}
+WITH max_date AS (
 
     {% if is_incremental() %}
-    WHERE file_date > (SELECT MAX(file_date) FROM {{ this }})
+        SELECT MAX(file_date) AS max_file_date FROM {{ ref('stg_stores_sales') }}
+    {% else %}
+        SELECT NULL AS max_file_date
+    {% endif %}
+
+),
+
+stg_stores_sales AS (
+
+    SELECT s.*
+    FROM {{ ref('stg_stores_sales') }} s
+    CROSS JOIN max_date m
+
+    {% if is_incremental() %}
+    WHERE s.file_date > m.max_file_date
     {% endif %}
 
 ),

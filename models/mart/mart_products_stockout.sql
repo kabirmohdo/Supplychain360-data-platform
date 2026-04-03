@@ -1,4 +1,4 @@
-WITH inventories AS (
+WITH inventory AS (
     SELECT * FROM {{ ref('int_inventory') }}
 ),
 
