@@ -58,9 +58,9 @@ dfgdfg
 
 ## Tech Stack
 ```
-Tool              Purpose
+**Tool**              **Purpose**
 Apache Airflow	  Workflow orchestration
-Snowflake	        Cloud data warehouse
+Snowflake	      Cloud data warehouse
 dbt               Cloud	Data transformation
 Python	          Pipeline logic
 AWS S3	          Object Data storage
