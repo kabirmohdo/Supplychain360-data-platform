@@ -66,15 +66,16 @@ AWS S3	          Object Data storage
 ## Setup Instructions
 - Clone Repository
   ```
-  git clone [https://github.com/yo/launchpad_capstone.git](https://github.com/kabirmohdo/Supplychain360-data-platform.git)
+  git clone https://github.com/kabirmohdo/Supplychain360-data-platform.git
   cd Supplychain360-data-platform
-```
+  ```
+
 - Install Dependencies
   ```
   pip install -r requirements.txt
   ```
 - Start Airflow
-using Docker:
-```
-  docker-compose up -d
-```
+  using Docker:
+  ```
+    docker-compose up -d
+  ```
