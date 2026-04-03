@@ -1,4 +1,7 @@
 # Supplychain360-data-platform
+
+## Project overview/background
+
 ```SupplyChain360```, a fast-growing retail distribution company in the United States, manages product distribution for hundreds of retail stores across the country.
 
 Over the past year, the company has been experiencing serious operational inefficiencies in its supply chain:
@@ -28,8 +31,50 @@ The company leadership has decided to build a Unified Supply Chain Data Platform
 
 As a Data Engineer hired to design and implement this platform and If successful, the platform will allow the company to reduce stockouts, optimize inventory, and improve delivery efficiency, potentially saving millions of dollars annually.
 
-### DATA SOURCES
-Access granted to several operational datasets from different systems.
-Each dataset represents a different operational domain of the supply chain.
+## Project Overview
 
+This project implements a modern data platform that ingests raw data, loads it into Snowflake, and transforms it into analytics-ready models using dbt Cloud — all orchestrated by Apache Airflow.
 
+The pipeline is designed with production-grade principles:
+
+- Idempotent data loads
+- Automated orchestration
+- Scalable cloud architecture
+- Modular transformations
+
+## Objectives
+- Build a reliable ELT pipeline
+- Automate workflows using Airflow
+- Transform data using dbt Cloud
+- Enable analytics use cases such as:
+  - Product stockout trends
+  - Supplier delivery performance
+  - Warehouse efficiency
+  - Regional sales demand
+    
+## Architecture Diagram
+dfgdfg
+
+## Tech Stack
+Tool              Purpose
+Apache Airflow	  Workflow orchestration
+Snowflake	        Cloud data warehouse
+dbt               Cloud	Data transformation
+Python	          Pipeline logic
+AWS S3	          Object Data storage
+
+## Setup Instructions
+- Clone Repository
+  ```
+  git clone [https://github.com/yo/launchpad_capstone.git](https://github.com/kabirmohdo/Supplychain360-data-platform.git)
+  cd Supplychain360-data-platform
+```
+- Install Dependencies
+  ```
+  pip install -r requirements.txt
+  ```
+- Start Airflow
+using Docker:
+```
+  docker-compose up -d
+```
