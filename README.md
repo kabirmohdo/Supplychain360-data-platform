@@ -54,7 +54,8 @@ The pipeline is designed with production-grade principles:
     - Regional sales demand
     
 ## Architecture Diagram
-dfgdfg
+<img width="1536" height="1024" alt="ChatGPT Image Apr 3, 2026, 03_39_33 PM" src="https://github.com/user-attachments/assets/205c75c8-a123-4087-9e04-daefd7a9b75f" />
+
 
 ## Tech Stack
 ```
