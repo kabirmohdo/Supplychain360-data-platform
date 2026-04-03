@@ -68,6 +68,13 @@ AWS S3	          Object Data storage
 Docker            For containerization
 ```
 
+## Prerequisites
+- Docker Desktop installed and running.
+- Terraform installed
+- Git installed.
+- A Snowflake account and AWS credentials.
+- dbt cloud developer account
+
 ## Setup Instructions
 - Clone Repository
   ```
@@ -85,3 +92,27 @@ Docker            For containerization
   ```
     docker-compose up -d
   ```
+
+## Airflow Deployment
+Check that the containers are running and healthy, access the airflow UI via ```http://localhost:8080```
+
+## Infrastructure
+Provision infrastructure with ```terraform```, run the below commands
+```
+cd terraform-infra
+
+terraform init
+
+terraform plan
+
+terraform apply
+```
+
+## Security
+Confidentail security information are stored in airflow variable and connection items:
+
+- .env
+- snowflake credentails (snowflake_default)
+- AWS credentials (aws_default)
+- stmp emailing credentials
+
