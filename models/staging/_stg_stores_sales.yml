@@ -14,15 +14,17 @@ models:
         description: "Foreign key linking to the store."
         tests:
           - relationships:
-              to: ref('stg_stores_details')
-              field: store_id
+              arguments:
+                to: ref('stg_stores_details')
+                field: store_id
       
       - name: product_id
         description: "Foreign key linking to the product."
         tests:
           - relationships:
-              to: ref('stg_products')
-              field: product_id
+              arguments:
+                to: ref('stg_products')
+                field: product_id
       
       - name: quantity_sold
         description: "Number of units sold."

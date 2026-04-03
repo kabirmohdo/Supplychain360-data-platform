@@ -6,11 +6,7 @@
 }}
 
 WITH stg_warehouses AS (
-    SELECT * FROM {{ ref('bronze_warehouses') }}
-
-    {% if is_incremental() %}
-    WHERE ingestion_timestamp > (SELECT MAX(ingestion_timestamp) FROM {{ this }})
-    {% endif %}
+    SELECT * FROM {{ ref('stg_warehouses') }}
 ),
 
 deduplicated AS (
@@ -18,7 +14,7 @@ deduplicated AS (
         *,
         ROW_NUMBER() OVER (
             PARTITION BY warehouse_id 
-            ORDER BY ingestion_timestamp DESC
+            ORDER BY warehouse_id DESC
         ) AS row_num
     FROM stg_warehouses
 ),
@@ -30,8 +26,6 @@ transformed AS (
         TRIM(city) AS city,
         TRIM(state) AS state,
 
-        ingestion_timestamp,
-        _ingested_at AS stg_ingested_at,
         CURRENT_TIMESTAMP AS _transformed_at
     FROM deduplicated
     WHERE row_num = 1

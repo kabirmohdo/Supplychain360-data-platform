@@ -4,11 +4,11 @@ with source as (
 
 renamed as (
     SELECT
-        warehouse_id,
-        city,
-        state,
-        ingestion_timestamp,
-        current_timestamp as _ingested_at,
+        "warehouse_id" as warehouse_id,
+        "city" as city,
+        "state" as state,
+        'ingestion_timestamp',
+        'current_timestamp' as _ingested_at,
         'raw.warehouses' as _source_file_path
     FROM source
 )

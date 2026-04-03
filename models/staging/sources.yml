@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: staging
+  - name: raw
     description: "Raw source data for SupplyChain360 platform ingested into Snowflake"
     database: launchpad_capstone
     schema: public

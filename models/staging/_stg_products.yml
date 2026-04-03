@@ -23,7 +23,8 @@ models:
         description: "Foreign key linking to the supplier."
         tests:
           - relationships:
-              to: ref('stg_suppliers')
-              field: supplier_id
+              arguments:
+                to: ref('stg_suppliers')
+                field: supplier_id
       - name: unit_price
         description: "The base price per unit."

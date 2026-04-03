@@ -1,11 +1,11 @@
 {% macro generate_schema_name(custom_schema_name, node) -%}
     {%- if custom_schema_name is none -%}
-        {%- if 'bronze' in node.path -%}
-            bronze
-        {%- elif 'silver' in node.path -%}
-            silver
-        {%- elif 'gold' in node.path -%}
-            gold
+        {%- if 'staging' in node.path -%}
+            staging
+        {%- elif 'intermediate' in node.path -%}
+            intermediate
+        {%- elif 'mart' in node.path -%}
+            mart
         {%- else -%}
             {{ target.schema }}
         {%- endif -%}

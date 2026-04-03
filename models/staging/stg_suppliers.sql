@@ -4,12 +4,12 @@ with source as (
 
 renamed as (
     SELECT
-        supplier_id,
-        supplier_name,
-        category,
-        country,
-        ingestion_timestamp,
-        current_timestamp as _ingested_at,
+        "supplier_id" as supplier_id,
+        "supplier_name" as supplier_name,
+        "category" as category,
+        "country" as country,
+        'ingestion_timestamp',
+        'current_timestamp' as _ingested_at,
         'raw.suppliers' as _source_file_path
     FROM source
 )

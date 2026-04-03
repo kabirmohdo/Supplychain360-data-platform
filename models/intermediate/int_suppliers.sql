@@ -7,10 +7,6 @@
 
 WITH stg_suppliers AS (
     SELECT * FROM {{ ref('stg_suppliers') }}
-
-    {% if is_incremental() %}
-    WHERE ingestion_timestamp > (SELECT MAX(ingestion_timestamp) FROM {{ this }})
-    {% endif %}
 ),
 
 deduplicated AS (
@@ -18,7 +14,7 @@ deduplicated AS (
         *,
         ROW_NUMBER() OVER (
             PARTITION BY supplier_id 
-            ORDER BY ingestion_timestamp DESC
+            ORDER BY supplier_id DESC
         ) AS row_num
     FROM stg_suppliers
 ),
@@ -31,8 +27,6 @@ transformed AS (
         TRIM(category) AS category,
         TRIM(country) AS country,
 
-        ingestion_timestamp,
-        _ingested_at AS stg_ingested_at,
         CURRENT_TIMESTAMP AS _transformed_at
     FROM deduplicated
     WHERE row_num = 1

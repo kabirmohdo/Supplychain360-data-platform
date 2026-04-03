@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: _stg_warehouses
+  - name: stg_warehouses
     description: "staging layer view of warehouses."
     columns:
       - name: warehouse_id

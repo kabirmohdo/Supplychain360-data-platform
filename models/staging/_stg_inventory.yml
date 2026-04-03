@@ -8,15 +8,17 @@ models:
         description: "Foreign key for the warehouse."
         tests:
           - relationships:
-              to: ref('stg_warehouses')
-              field: warehouse_id
+              arguments:
+                to: ref('stg_warehouses')
+                field: warehouse_id
 
       - name: product_id
         description: "Foreign key for the product."
         tests:
           - relationships:
-              to: ref('stg_products')
-              field: product_id
+              arguments:
+                to: ref('stg_products')
+                field: product_id
 
       - name: quantity_available
         description: "Number of units currently in stock."

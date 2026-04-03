@@ -7,10 +7,6 @@
 
 WITH stg_products AS (
     SELECT * FROM {{ ref('stg_products') }}
-
-    {% if is_incremental() %}
-    WHERE ingestion_timestamp > (SELECT MAX(ingestion_timestamp) FROM {{ this }})
-    {% endif %}
 ),
 
 deduplicated AS (
@@ -18,7 +14,7 @@ deduplicated AS (
         *,
         ROW_NUMBER() OVER (
             PARTITION BY product_id 
-            ORDER BY ingestion_timestamp DESC
+            ORDER BY product_id  -- fallback ordering
         ) AS row_num
     FROM stg_products
 ),
@@ -27,11 +23,9 @@ transformed AS (
     SELECT
         UPPER(TRIM(product_id)) AS product_id,
         UPPER(TRIM(supplier_id)) AS supplier_id,
-
         TRIM(product_name) AS product_name,
         TRIM(category) AS category,
         TRIM(brand) AS brand,
-        
         CAST(unit_price AS NUMERIC(12, 2)) AS unit_price,
 
         CASE 
@@ -40,8 +34,6 @@ transformed AS (
             ELSE 'STANDARD_VALUE'
         END AS price_segment,
 
-        ingestion_timestamp,
-        _ingested_at AS stg_ingested_at,
         CURRENT_TIMESTAMP AS _transformed_at
     FROM deduplicated
     WHERE row_num = 1
