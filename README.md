@@ -10,9 +10,10 @@ Over the past year, the company has been experiencing serious operational ineffi
 - Warehouses report overstocked inventory for slow-moving items.
 - Delivery delays are becoming common.
 - Management cannot accurately answer simple questions like:
-  - Which products are causing the most stockouts?
-  - Which warehouses are inefficient?
-  - Which suppliers consistently deliver late?
+    - Which products are causing the most stockouts?
+    - Which warehouses are inefficient?
+    - Which suppliers consistently deliver late?
+    
 The biggest issue is data fragmentation. Operational data is spread across multiple systems:
 
 - Warehouse inventory systems
@@ -47,15 +48,16 @@ The pipeline is designed with production-grade principles:
 - Automate workflows using Airflow
 - Transform data using dbt Cloud
 - Enable analytics use cases such as:
-  - Product stockout trends
-  - Supplier delivery performance
-  - Warehouse efficiency
-  - Regional sales demand
+    - Product stockout trends
+    - Supplier delivery performance
+    - Warehouse efficiency
+    - Regional sales demand
     
 ## Architecture Diagram
 dfgdfg
 
 ## Tech Stack
+```
 Tool              Purpose
 Apache Airflow	  Workflow orchestration
 Snowflake	        Cloud data warehouse
@@ -63,6 +65,7 @@ dbt               Cloud	Data transformation
 Python	          Pipeline logic
 AWS S3	          Object Data storage
 Docker            For containerization
+```
 
 ## Setup Instructions
 - Clone Repository
